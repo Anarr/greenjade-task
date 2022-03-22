@@ -7,7 +7,6 @@ import (
 
 var conf *viper.Viper
 
-
 //Load load inital configuration
 func Load(env string) (*viper.Viper, error) {
 	conf = viper.New()

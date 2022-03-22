@@ -12,19 +12,18 @@ type DatabaseConnInterface interface {
 }
 
 type AwsConnection struct {
-	ApiKey string
+	ApiKey    string
 	SecretKey string
-	Region string
+	Region    string
 }
 
 func (ac AwsConnection) Connect() (*dynamodb.DynamoDB, error) {
 	creds := credentials.NewStaticCredentials(ac.ApiKey, ac.SecretKey, "")
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		Config: aws.Config{
-			Region: aws.String(ac.Region),
+			Region:      aws.String(ac.Region),
 			Credentials: creds,
 		},
-
 	}))
 
 	// Create DynamoDB client

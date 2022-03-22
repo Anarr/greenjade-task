@@ -19,7 +19,7 @@ func main() {
 	conn, err := db.NewConnection(&db.AwsConnection{
 		ApiKey:    conf.GetString("aws.access_key"),
 		SecretKey: conf.GetString("aws.secret_key"),
-		Region: conf.GetString("aws.region"),
+		Region:    conf.GetString("aws.region"),
 	})
 
 	must(err)
@@ -29,7 +29,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(":5001", router))
 }
 
-func  must (err error) {
+func must(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
