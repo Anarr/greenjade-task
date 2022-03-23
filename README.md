@@ -1,6 +1,11 @@
 # greenjade-task
 GreenJade golang task
 
+to run app you have 2 options:
+ - with regular way just run go run main.go in your terminal;
+ - or run docker-compose up
+By default the app running on port :5001
+
 #####The time estimation for each part which mentioned in the task:
 
 - Part1: 7hours
