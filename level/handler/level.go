@@ -42,7 +42,7 @@ func (slr *StoreLevelRequest) Validate() error {
 		return errors.New("level can not be empty")
 	}
 
-	maxLen := 2
+	maxLen := 100
 	dimensionLen := len(slr.Level[0])
 
 	for _, v := range slr.Level {
