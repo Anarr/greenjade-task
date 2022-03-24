@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/Anarr/greenjade/config"
 	"github.com/Anarr/greenjade/internal/response"
 	"github.com/Anarr/greenjade/level/repository"
 	"github.com/asaskevich/govalidator"
@@ -39,7 +40,7 @@ type UpdateLevelRequest struct {
 func (slr *StoreLevelRequest) Validate() error {
 
 	if len(slr.Level) == 0 {
-		return errors.New("level can not be empty")
+		return errors.New(config.ErrLevelCanNotEmpty)
 	}
 
 	maxLen := 100
@@ -48,12 +49,12 @@ func (slr *StoreLevelRequest) Validate() error {
 	for _, v := range slr.Level {
 		//check each dimension size less or equal 100
 		if len(v) > maxLen {
-			return errors.New(fmt.Sprintf("dimension size must be less %d", maxLen))
+			return errors.New(fmt.Sprintf(config.ErrDimensionSize, maxLen))
 		}
 
 		//check each dimension len is equal
 		if len(v) != dimensionLen {
-			return errors.New("each dimension must the same len")
+			return errors.New(config.ErrDimensionLen)
 		}
 
 		dimensionLen = len(v)
@@ -62,7 +63,7 @@ func (slr *StoreLevelRequest) Validate() error {
 
 		for _, e := range v {
 			if e > 2 || e < 0 {
-				return errors.New("dimension elements value must be 0, 1 and 2")
+				return errors.New(config.ErrDimensionElement)
 			}
 		}
 	}
@@ -105,7 +106,7 @@ func GetByIdHandler(db *dynamodb.DynamoDB) httprouter.Handle {
 
 		//check id must be integer
 		if !govalidator.IsNumeric(params.ByName("id")) {
-			response.Error(w, "opps")
+			response.Error(w, config.ErrIdMustNumeric)
 			return
 		}
 
@@ -113,7 +114,7 @@ func GetByIdHandler(db *dynamodb.DynamoDB) httprouter.Handle {
 		level, err := repository.GetById(db, params.ByName("id"))
 
 		if err != nil {
-			response.Error(w, "Not exists level")
+			response.Error(w, config.ErrNotExistsLevel)
 			return
 		}
 
@@ -130,8 +131,7 @@ func StoreHandler(db *dynamodb.DynamoDB) httprouter.Handle {
 		decoder := json.NewDecoder(r.Body)
 
 		if err := decoder.Decode(&res); err != nil {
-			fmt.Println(err)
-			response.Error(w, "Could not handle user request.")
+			response.Error(w, config.ErrDecodeErr)
 			return
 		}
 
@@ -163,7 +163,7 @@ func UpdateHandler(db *dynamodb.DynamoDB) httprouter.Handle {
 
 		if err := decoder.Decode(&res); err != nil {
 			fmt.Println(err)
-			response.Error(w, "Could not handle user request.")
+			response.Error(w, config.ErrDecodeErr)
 			return
 		}
 

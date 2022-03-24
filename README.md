@@ -12,6 +12,9 @@ By default the app running on port :5001
 https://documenter.getpostman.com/view/1163851/UVsSL2pg
 
 The data stored in AWS dynamodb. I attached sample images how viewed stored data in AWS interface:
+![alt text](https://greenjadetask.s3.eu-central-1.amazonaws.com/Screen+Shot+2022-03-24+at+12.12.03.png)
+
+![alt text](https://greenjadetask.s3.eu-central-1.amazonaws.com/Screen+Shot+2022-03-24+at+12.12.24.png)
  
 
 ##### The time estimation for each part which mentioned in the task:
@@ -28,7 +31,7 @@ The data stored in AWS dynamodb. I attached sample images how viewed stored data
 
 ###### Part 3
     I think we must use searching algorithms here. 
-    While I thinked about the part 3 and research it on interner there is 
+    While I thinked about the part 3 and research it on internet there is 
     bfs and dfs algorithms which exactly use for find path for out of maze.
     
     
