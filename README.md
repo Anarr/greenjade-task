@@ -1,5 +1,6 @@
 # greenjade-task
 
+
 Before run the commands below please add values to config/development.yml file with values which I sent in email.
 
 ---
@@ -33,6 +34,4 @@ The data stored in AWS dynamodb. I attached sample images how viewed stored data
     I think we must use searching algorithms here. 
     While I thinked about the part 3 and research it on internet there is 
     bfs and dfs algorithms which exactly use for find path for out of maze.
-    
-    
     
