@@ -1,19 +1,24 @@
 # greenjade-task
-GreenJade golang task
 
+Before run the commands below please add values to config/development.yml file with values which I sent in email.
+
+---
 to run app you have 2 options:
  - with regular way just run go run main.go in your terminal;
  - or run docker-compose up
 By default the app running on port :5001
 
-#####The time estimation for each part which mentioned in the task:
+## api doc
+https://documenter.getpostman.com/view/1163851/UVsSL2pg
+
+The data stored in AWS dynamodb. I attached sample images how viewed stored data in AWS interface:
+ 
+
+##### The time estimation for each part which mentioned in the task:
 
 - Part1: 7hours
 - Part2: 2hours
 - Part3: 5hours
-
-#api doc
-https://documenter.getpostman.com/view/1163851/UVsSL2pg
 
 #### Notes:
 ###### Part 2
@@ -25,5 +30,6 @@ https://documenter.getpostman.com/view/1163851/UVsSL2pg
     I think we must use searching algorithms here. 
     While I thinked about the part 3 and research it on interner there is 
     bfs and dfs algorithms which exactly use for find path for out of maze.
+    
     
     
